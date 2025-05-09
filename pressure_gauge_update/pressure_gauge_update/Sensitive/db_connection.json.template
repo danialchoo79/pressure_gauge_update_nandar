@@ -1,0 +1,19 @@
+# Template for database connection required for the program to work.
+# Current Project requires a connection to SPC and LTS
+
+{
+    "SPC" : {
+                "username" : <replace username>,
+                "password" : <replace password>,
+                "ip"       : <replace ip>
+
+    },
+
+    "LTS" : {
+              "username"  : <replace username>,
+              "password"  : <replace password>,
+              "server"    : <replace ip/server>,
+              "database"  : <replace database>
+    }
+
+}

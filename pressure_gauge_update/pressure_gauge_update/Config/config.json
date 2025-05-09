@@ -1,0 +1,16 @@
+{
+    "program_mode": "PROD",
+    "program_version": "V1.1",
+    "log_base_fp": "C:/nandar/pressure_gauge_update/pressure_gauge_update/logs",
+    "log_fp": "C:/nandar/pressure_gauge_update/pressure_gauge_update/logs/pressure.log",
+    "base_output_path": "C:/nandar/pressure_gauge_update/pressure_gauge_update/output",
+    "static_chromeDriver": "C:/nandar/pressure_gauge_update/pressure_gauge_update/driver/chromedriver.exe",
+    "line_config": {
+        "201": {
+            "PRESSURE_PUMP_1": {
+                "URL": "http://128.53.209.100/stream",
+                "THRESHOLD": 2
+            }
+        }
+    }
+}

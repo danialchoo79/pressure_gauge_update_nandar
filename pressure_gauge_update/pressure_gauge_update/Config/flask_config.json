@@ -1,0 +1,6 @@
+{
+    "log_base_fp" : "D:/INPUT/Data_Integrity_Project/FT_17/LOGS/flask",
+    "log_fp" : "D:/INPUT/Data_Integrity_Project/FT_17/LOGS/flask/v1.log",
+    "ft_17_base" : "D:/INPUT/Data_Integrity_Project/FT_17/TEMP_FILES/",
+    "ft_17_content_type" : ["application/zip","application/x-zip-compressed"]
+}
