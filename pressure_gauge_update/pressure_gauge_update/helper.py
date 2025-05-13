@@ -10,13 +10,13 @@ from logging.handlers import RotatingFileHandler
 import arrow
 import cv2
 import socket
+import time
 
 logs = logging.getLogger("PRESSURE")
 
-
 def INIT_DRIVER(static_chromeDriver):
     try:
-        options = Options()
+        options = Options() # new instance of Chrome Options Object
         # ua = UserAgent(cache=False,fallback='Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko')
         # Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko
         userAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C)"
@@ -29,7 +29,6 @@ def INIT_DRIVER(static_chromeDriver):
         return driver
     except Exception as e:
         raise e
-
 
 def get_config():
     try:
@@ -47,24 +46,39 @@ def get_config():
     except Exception as e:
         raise e
 
-
 def start_logger(main_config):
     try:
         log_base_fp = main_config["log_base_fp"]
         logpath = main_config["log_fp"]
+
         print(log_base_fp)
+
+        # Make directory should it not exist
         if not os.path.exists(log_base_fp):
             os.makedirs(log_base_fp)
             time.sleep(0.5)
+        
+        # Retrieve PRESSURE Logging Object
         logger = logging.getLogger("PRESSURE")
+
+        # Reset logger by removing attached handlers
         if logger.hasHandlers():
             logger.handlers.clear()
+
+        # Writes logs to a file, and automatically rotates and 
+        # backs up the file when it gets too big 
         handler = RotatingFileHandler(logpath, maxBytes=2000000, backupCount=30)
+        
+        # Capture all log messages, even the most detailed ones
         logger.setLevel(logging.DEBUG)
+
+        # Formatting for logs
         handler.suffix = "%Y%m%d"
         log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
         formatter = logging.Formatter(log_format)
         handler.setFormatter(formatter)
+
+        # Adds handler
         logger.addHandler(handler)
         logger.info("Starting Process")
         logger.info(
@@ -76,7 +90,6 @@ def start_logger(main_config):
         return logger
     except Exception as e:
         raise e
-
 
 def create_base_folder(main_config):
     try:

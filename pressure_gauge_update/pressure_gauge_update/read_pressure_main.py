@@ -82,11 +82,13 @@ def main():
                 status = ""
                 status_msg = ""
                 result = ""
+                
                 try:
                     driver.set_page_load_timeout(2)
                     try:
                         logger.info("Attempting to open URL")
                         # driver.get(url_path)
+
                         html_content = """
                         <!DOCTYPE html>
                         <html style="height: 100%;">

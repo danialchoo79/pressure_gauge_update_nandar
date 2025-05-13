@@ -65,7 +65,6 @@ def create_pressure_header_main(params, spt_db_connections):
 
 def create_run_data_main(params, spt_db_connections):
     try:
-
         pgConn = None
         pgConn = getpgconnection((spt_db_connections['DATABASE'],
                          spt_db_connections['USER'],
@@ -104,12 +103,12 @@ def create_run_data(pgConn,data):
     try:
         cur = pgConn.cursor()
         cur.execute("SELECT * FROM cryro_pump_uat.create_cryro_pump_run_data( %s,%s,%s,%s,%s,%s) ;", data)
-        result = cur.fetchall()[0]
-        error_code = result[0]
+        result = cur.fetchall()[0] # grabs first row of results
+        error_code = result[0] # gets error / status code
 
         if (error_code == "1") :
             raise Exception("Error create_run_data due to  - " , result[1])
-        pgConn.commit()
+        pgConn.commit() # finalize the changes
 
     except Exception as e:
         raise e
