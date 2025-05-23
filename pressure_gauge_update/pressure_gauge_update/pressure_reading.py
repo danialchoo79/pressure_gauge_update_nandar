@@ -18,6 +18,7 @@ def avg_circles(circles, b):
 
         It finds the centroid of the best representative circle.   
     """
+    
     avg_x = 0
     avg_y = 0
     avg_r = 0
@@ -104,8 +105,8 @@ def calibrate_gauge(filepath, output_path, line_key, pump_key):
     image_filename_circle = output_path + "/{}_{}_circle.png".format(line_key, pump_key)
     cv2.imwrite(image_filename_circle, img)
 
-    # for calibration, plot lines from center going out at every 10 degrees and add marker
-    # for i from 0 to 36 (every 10 deg)
+    # For calibration, plot lines from center going out at every 10 degrees and add marker
+    # For i from 0 to 36 (every 10 deg)
 
     """
     Goes through the motion of a circle and sets x and y values based on the set separation spacing.  Also adds text to each
